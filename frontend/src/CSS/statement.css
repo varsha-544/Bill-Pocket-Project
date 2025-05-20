@@ -1,0 +1,304 @@
+/* Page container */
+.statement-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main column box */
+.column {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+/* Header */
+.column-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    padding-top: 10px;
+    text-align: center; 
+
+}
+
+.column-header h2 {
+    font-size: 28px;
+    margin: 0;
+    flex-grow: 1; /* Ensures it takes up space */
+    text-align: center;
+
+}
+
+.column-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.column-header button:hover {
+    background-color: #0056b3;
+}
+
+/* Statement list */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+li span {
+    margin-bottom: 4px;
+}
+
+/* Ensuring the 'Goal' item text appears in blue */
+li span strong {
+    color: #007bff; /* Blue shade */
+}
+
+/* Buttons inside each item */
+.statement1-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.statement1-actions button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.statement1-actions button:nth-child(2) {
+    background-color: #dc3545;
+}
+
+.statement1-actions button:hover {
+    opacity: 0.9;
+}
+
+/* Expense Trend section */
+.expense-trend {
+    width: 100%;
+    max-width: 700px;
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.expense-trend h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.expense-trend-item {
+    background-color: #b2ebf2;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Refresh button */
+.f5-button {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.f5-button:hover {
+    background-color: #0f7b92;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-buttons button:last-child {
+    background-color: #6c757d;
+    color: white;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.controls input, .controls select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+textarea {
+  resize: vertical;
+  height: 60px;
+  margin-top: 8px;
+}
+.expensse-slot {
+    background: #f4f4f4; /* ✅ Subtle background */
+    padding: 12px;
+    border-radius: 8px; /* ✅ Soft rounded corners */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.expensse-slot span {
+    display: block;
+    padding: 5px;
+    font-size: 18px; /* ✅ Slightly larger text */
+}
+
+.expensse-slot span strong {
+    color: #2E86C1; /* ✅ Blue emphasis */
+}
+
+.chart-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.chart-container h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4CAF50; /* ✅ Green for positive emphasis */
+}
+.income-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2E86C1;
+    padding: 10px;
+}
+
+.income-input input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 150px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.income-input button {
+    padding: 8px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.income-input button:hover {
+    background-color: #45a049;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.search-box:focus {
+    border-color: #4CAF50;
+    outline: none;
+}

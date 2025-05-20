@@ -1,0 +1,173 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    width: 400px;
+    height: 500px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.login-container.flipped .login-form-container {
+    transform: rotateY(180deg);
+}
+
+.login-container.flipped .registration-form-container {
+    transform: rotateY(0deg);
+}
+.login-form{
+    height: 300px;
+    align-items: center;
+    box-sizing: content-box;
+
+}
+
+.login-form-container{
+    width: 100%;
+    height:500px;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form-container {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    background-color: #007acc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-container {
+    transform: rotateY(0deg);
+}
+
+.registration-form-container {
+    transform: rotateY(-180deg);
+}
+
+.login-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 5px; /* Add spacing between each row */
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Add spacing between each slot */
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.login-button {
+    background-color: #004c80;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.toggle-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.toggle-text:hover {
+    color: #0056b3;
+}
+
+.registration-form {
+    display: flex;
+    justify-content: space-between; /* Space between the two columns */
+    width: 100%;
+    gap: 15px; /* Space between columns */
+}
+
+.registration-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Space between slots in each column */
+}
+
+.registration-column .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-actions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+.login-button{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
