@@ -40,24 +40,36 @@ function Statement() {
 };
  
   useEffect(() => {
-    const fetchStatementsData = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        alert("Please login to access statements.");
-        navigate("/login");
-        return;
-  }
+  const fetchStatementsData = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login to access statements.");
+      navigate("/login");
+      return;
+    }
+
     try {
       const response = await getStatements();
       console.log("🚀 API Response:", response);
-      setStatements(response || [] );
+      if (response && response.length > 0) {
+        setStatements(response);
+        localStorage.setItem("statements", JSON.stringify(response)); // ✅ localStorage sync
+      } else {
+        const saved = JSON.parse(localStorage.getItem("statements") || "[]"); // ✅ fallback
+        setStatements(saved);
+      }
     } catch (error) {
       console.error("Error fetching statements:", error);
+      const saved = JSON.parse(localStorage.getItem("statements") || "[]"); // ✅ fallback
+      setStatements(saved);
     }
   };
 
-   fetchStatementsData();
-  }, [ navigate]); // ✅ Fix dependencies
+  fetchStatementsData();
+}, [navigate]);
+useEffect(() => {
+  localStorage.setItem("statements", JSON.stringify(statements)); // ✅ update storage on change
+}, [statements]);
 
   const totalExpense = statements.reduce((total, s) => total + parseFloat(s.cost || 0), 0);
   const remainingBalance = monthlyIncome ? monthlyIncome - totalExpense : 0; // ✅ Adjust dynamically

@@ -21,20 +21,26 @@ function Goal() {
         const getGoals = async () => {
             try {
                 const storedUser = JSON.parse(localStorage.getItem("user"));
-                  console.log("Stored User:", storedUser);
+                console.log("Stored User:", storedUser);
 
                 const currentUserId = storedUser?.id;
 
                 if (!currentUserId) {
-                   console.log("User ID missing in localStorage:", storedUser);
+                    console.log("User ID missing in localStorage:", storedUser);
                     return;
                 }
 
                 const res = await axios.get(`${baseURL}/goals?userId=${currentUserId}`);
                 const goals = res.data;
 
-                setShortTermGoals(goals.filter(goal => goal.type === "short"));
-                setLongTermGoals(goals.filter(goal => goal.type === "long"));
+                const shortGoals = goals.filter(goal => goal.type === "short");
+                const longGoals = goals.filter(goal => goal.type === "long");
+
+                setShortTermGoals(shortGoals);
+                setLongTermGoals(longGoals);
+
+                // ✅ Save to localStorage for homepage preview
+                localStorage.setItem("goals", JSON.stringify({ shortTerm: shortGoals, longTerm: longGoals }));
             } catch (err) {
                 console.error("Failed to fetch goals:", err);
             }
@@ -82,7 +88,7 @@ function Goal() {
     };
 
     const handleAddShortTermGoal = async () => {
-         console.log("Short Term Submit clicked");
+        console.log("Short Term Submit clicked");
         try {
             if (!newGoal.goal || !newGoal.cost || !newGoal.date) {
                 alert("Please fill in all fields.");
@@ -162,7 +168,9 @@ function Goal() {
     const handleDeleteShortTermGoal = async (index) => {
         try {
             await axios.delete(`${baseURL}/goals/${shortTermGoals[index]._id}`);
-            setShortTermGoals(shortTermGoals.filter((_, i) => i !== index));
+            const updatedGoals = shortTermGoals.filter((_, i) => i !== index);
+            setShortTermGoals(updatedGoals);
+            localStorage.setItem("goals", JSON.stringify({ shortTerm: updatedGoals, longTerm: longTermGoals }));
         } catch (err) {
             console.error(err);
         }
@@ -171,7 +179,9 @@ function Goal() {
     const handleDeleteLongTermGoal = async (index) => {
         try {
             await axios.delete(`${baseURL}/goals/${longTermGoals[index]._id}`);
-            setLongTermGoals(longTermGoals.filter((_, i) => i !== index));
+            const updatedGoals = longTermGoals.filter((_, i) => i !== index);
+            setLongTermGoals(updatedGoals);
+            localStorage.setItem("goals", JSON.stringify({ shortTerm: shortTermGoals, longTerm: updatedGoals }));
         } catch (err) {
             console.error(err);
         }
@@ -196,6 +206,9 @@ function Goal() {
         setIsLongTermModalOpen(false);
         setEditIndex(null);
         setIsEditingShortTerm(false);
+
+        // 🔄 Sync latest goal data to localStorage
+        localStorage.setItem("goals", JSON.stringify({ shortTerm: shortTermGoals, longTerm: longTermGoals }));
     };
 
     return (
